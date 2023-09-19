@@ -1,10 +1,15 @@
 package hw2;
 
 import hw2.abstracts.Vehicle;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class VehicleTest {
@@ -69,17 +74,18 @@ class VehicleTest {
        т.е. дает и машине и мотоциклу сначала по 60 и во 2й итерации по 75 и соответственно тесты падают
      */
 
+    // добавил решение, но нужно добавить в Car setSpeed
+
 //    @ParameterizedTest
-//    @ValueSource(ints = {60,75})
+//    @CsvSource({ "60, 60", "75, 75" })
 //    @DisplayName("Проверить, что скорость транспортного средства соответствует ожидаемой скорости")
-//    void testVehicleSpeed(int expectedSpeed) {
+//    void testVehicleSpeed(int initialSpeed, int expectedSpeed) {
+//        car.setSpeed(initialSpeed);
+//        motorcycle.setSpeed(initialSpeed);
+//
 //        car.testDrive();
 //        motorcycle.testDrive();
 //
-//       System.out.println(car.getSpeed());
-//       System.out.println(motorcycle.getSpeed());
-//
-//        // Проверяем скорость для каждого транспортного средства
 //        assertEquals(expectedSpeed, car.getSpeed());
 //        assertEquals(expectedSpeed, motorcycle.getSpeed());
 //    }
