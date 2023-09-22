@@ -3,6 +3,7 @@ package hw3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,15 +26,16 @@ class MainTest {
         );
     }
 
-    // тестировал различные способы тестов (для себя) (хотя этот тест и избыточен, было интересно как можно реализовать проверку массива)
     @ParameterizedTest
-    @ValueSource(ints = {10, 1, -4, 7, 8})
-    void testEvenAndOddNumber(int number) {
-        if (number % 2 == 0) {
-            assertTrue(main.evenOddNumber(number));
-        } else {
-            assertFalse(main.evenOddNumber(number));
-        }
+    @CsvSource({
+            "10, true",
+            "1, false",
+            "-4, true",
+            "7, false",
+            "8, true"
+    })
+    void testEvenAndOddNumber(int number, boolean expectedResult) {
+        assertEquals(expectedResult, main.evenOddNumber(number));
     }
 
     @ParameterizedTest
