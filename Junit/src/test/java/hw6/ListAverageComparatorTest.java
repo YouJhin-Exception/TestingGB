@@ -1,10 +1,13 @@
 package hw6;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -174,6 +177,19 @@ class ListAverageComparatorTest {
             String actualOutput = getOutput(comparator::compareAverages);
             assertEquals(expectedOutput.trim(), actualOutput.trim());
         });
+    }
+
+    /**
+     * Проверяем что метод calculateAverage возвращает
+     * правильное среднее значение для списка из 2х елементов
+     */
+    @Test
+    @DisplayName("Проверяем что метод calculateAverage возвращает " +
+            "правильное среднее значение для списка из 2х елементов")
+    void testCalculateAverage() {
+        ListAverageComparator listAverageComparator = new ListAverageComparator();
+        List<Integer> list = Arrays.asList(1, 2);
+        assertEquals(1.5, listAverageComparator.calculateAverage(list));
     }
 
 
