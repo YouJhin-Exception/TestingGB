@@ -17,15 +17,8 @@ public class Main {
         list2.add(25);
         list2.add(35);
 
-//        ListAverageComparator listAverageComparator = new ListAverageComparator(list1, list2);
-//        listAverageComparator.compareAverages();
-
-        List<Integer> list3 = Arrays.asList(-1, -2, -3);
-        List<Integer> list4 = Arrays.asList(-1, -2, -3, -4, -5, -6);
-
-        ListAverageComparator listAverageComparator2 = new ListAverageComparator(list3, list4);
-        listAverageComparator2.compareAverages();
-
+        ListAverageComparator listAverageComparator = new ListAverageComparator(list1, list2);
+        listAverageComparator.compareAverages();
 
     }
 }
