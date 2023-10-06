@@ -5,16 +5,16 @@ import java.util.List;
 /**
  * Класс сравнивает средние значения двух списков целых чисел.
  */
-public class ListAverageComparator {
+public class ListAverageComparator<T extends Number> {
 
     /**
      * Переменная хранящая первый список чисел для сравнения.
      */
-    private List<Integer> list1;
+    private List<T> list1;
     /**
      * Переменная хранящая второй список чисел для сравнения.
      */
-    private List<Integer> list2;
+    private List<T> list2;
 
     /**
      * Конструктор по умолчанию.
@@ -28,8 +28,12 @@ public class ListAverageComparator {
      * @param listIn1 Первый список для сравнения
      * @param listIn2 Второй список для сравнения
      */
-    public ListAverageComparator(final List<Integer> listIn1,
-                                 final List<Integer> listIn2) {
+    public ListAverageComparator(final List<T> listIn1,
+                                 final List<T> listIn2) {
+        if (listIn1 == null || listIn2 == null){
+            throw new IllegalArgumentException("Списки не могут быть null");
+        }
+
         this.list1 = listIn1;
         this.list2 = listIn2;
     }
@@ -40,19 +44,19 @@ public class ListAverageComparator {
      * @param list Список, среднее значение которого нужно вычислить
      * @return Среднее значение элементов списка или 0, если список пуст
      */
-    public double calculateAverage(final List<Integer> list) {
+    public double calculateAverage(final List<T> list) {
         // Если список пуст, возвращаем 0
         if (list.isEmpty()) {
             return 0;
         }
 
         // Вычисляем сумму всех чисел в списке
-        int sum = 0;
-        for (int num : list) {
-            sum += num;
+        double sum = 0;
+        for (T num : list) {
+            sum += num.doubleValue();
         }
         // Возвращаем среднее значение элементов списка
-        return (double) sum / list.size();
+        return sum / list.size();
     }
 
     /**
@@ -79,7 +83,7 @@ public class ListAverageComparator {
      *
      * @return первый список чисел
      */
-    public List<Integer> getList1() {
+    public List<T> getList1() {
         return list1;
     }
 
@@ -88,7 +92,7 @@ public class ListAverageComparator {
      *
      * @return второй список чисел
      */
-    public List<Integer> getList2() {
+    public List<T> getList2() {
         return list2;
     }
 }
